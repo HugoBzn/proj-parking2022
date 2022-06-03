@@ -13,5 +13,14 @@ module.exports = {
         filename: path.join('javascripts','bundle.js'),
         //2.3 Path publico
         publicPath: '/'
+    },
+    //3. Configurando el servidor de desarrollo
+    devServer: {
+        //3.1 Folder de archivos estaticos
+        static: path.join(__dirname, 'public'),
+        //3.2 Puerto del servidor de desarrollo de WP (WebPack)
+        port: 8080,
+        //3.3 Definiendo host
+        host: 'localhost'
     }
 }
