@@ -48,7 +48,7 @@ module.exports = {
             //3.2 Reglas para CSS
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader]
+                use: [MiniCssExtractPlugin.loader, "css-loader"]
             }
         ],
     },
