@@ -1,6 +1,9 @@
 {
     "presets": [
         [
+            "minify", {"mangle":true}
+        ],
+        [
             "@babel/preset-env",
             {
                 "targets": {
