@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-import app from "../app";
+import app from "@s/app";
 // var debug = require('debug')('proj-parking2022:server');
 import Debug from "debug";
 // var http = require('http');
