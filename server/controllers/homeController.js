@@ -32,6 +32,9 @@ const about = (req, res) => {
     name: 'HugoBzn',
     email: 'hugobazan14@hotmail.com',
     url: 'https://github.com/HugoBzn',
+    description:
+      'Aplicacion que te permite registrar ideas de proyectos. PWPCII-2022A',
+    version: '0.0 alpha',
   });
 };
 
