@@ -15,8 +15,46 @@ import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 import aboutRouter from './routes/about';
 
+//Importando modulos de Webpack
+//Nucleo de Webpack
+import webpack from 'webpack';
+//Permite incrustar Webpack en Express
+import webpackDevMiddleware from 'webpack-dev-middleware';
+//Permite la actualizacion dinamica de la pagina
+import WebpackHotMiddleware from 'webpack-hot-middleware';
+//Configuración 
+import WebpackConfig from '../webpack.dev.config';
+
 //Aquí se crea la instancia de Express (req,res,next)=>{...}
 const app = express();
+
+//Recuperar el modo de ejecución
+const nodeEnv = process.env.NODE_ENV || 'development';
+
+//Decidiendo si embebemos el Webpack Middleware
+if(nodeEnv === 'development'){
+  //Emebebiendo Webpack a mi aplicación
+  console.log(`✍ Ejecutando en modo desarrollo 🤱👶`);
+  //Estableciendo el modo de webpack en desarrollo en el configurador
+  WebpackConfig.mode = "development";
+  //Configurando la ruta del HMR (Hot Module Replacement)
+  //reload = true (Habilita la recarga automatica cuando un archivo JS cambia)
+  //timeout=1000 (Tiempo de refresco de página)
+  WebpackConfig.entry = ['webpack-hot-middleware/client?reload=true&timeout=1000', WebpackConfig.entry,];
+  //Agregando el plugin a la configuración de desarrollo
+  WebpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+  //Creando el empaquetador a partir de un objeto de configuración
+  const bundler = webpack(WebpackConfig);
+  //Habilitando el middleware en Express
+  app.use(webpackDevMiddleware(bundler, {
+    publicPath: WebpackConfig.output.publicPath
+  })); 
+  //Habilitando el Middleware del Webpack HMR
+  app.use(WebpackHotMiddleware(bundler));
+
+}else{
+  console.log(`✍ Ejecutando en modo producción ⚙⚙`);
+}
 
 //Configuración del motor de plantillas (Template engine)
 // view engine setup
