@@ -10,6 +10,9 @@ import Debug from 'debug';
 // var http = require('http');
 import http from 'http';
 
+// Importando nuestro logger winston
+import winston from '../config/winston';
+
 // Creando instancia del debugger
 const debug = Debug('proj-parking2022:server');
 /**
@@ -69,12 +72,12 @@ function onError(error) {
   switch (error.code) {
     case 'EACCES':
       // console.error(bind + ' requires elevated privileges');
-      console.error(`${bind} requires elevated privileges`);
+      winston.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
       // console.error(bind + ' is already in use');
-      console.error(`${bind} is already in use`);
+      winston.error(`${bind} is already in use`);
       process.exit(1);
       break;
     default:
@@ -90,5 +93,5 @@ function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ' ${port}`;
   debug(`Listening on ${bind}`);
-  console.log(`Servidor escuchando... 🤖👂 en ${app.get('port')}`);
+  winston.info(`Servidor escuchando... 🤖👂 en ${app.get('port')}`);
 }
