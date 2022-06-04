@@ -15,6 +15,9 @@ import http from 'http';
 // Importando nuestro logger winston
 import winston from '../config/winston';
 
+// Importando el objeto de las llaves de configuracion
+import configKeys from '../config/configKeys';
+
 // Creando instancia del debugger
 const debug = Debug('proj-parking2022:server');
 /**
@@ -47,7 +50,7 @@ function normalizePort(val) {
   return false;
 }
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(configKeys.port || '5000');
 
 // app es una instancia de ExpressJs[] [ NODE ]
 app.set('port', port);
