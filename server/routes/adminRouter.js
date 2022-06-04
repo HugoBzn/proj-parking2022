@@ -1,6 +1,12 @@
 // Importando el Router de Express
 import { Router } from 'express';
 
+// Importando el validador
+import Validate from '../validators/validateFactory';
+
+// Importamos el esquema de validacion
+import adminValidator from '../validators/adminValidator';
+
 // Importando el controlador de proyectos
 import adminController from '../controllers/adminController';
 
@@ -19,7 +25,14 @@ router.get('/add', adminController.add);
 /* ------ POST ------ */
 // Procesa el formulario que Agrega ideas de proyectos
 // POST /admin/add
-router.post('/add', adminController.addPost);
+router.post(
+  '/add',
+  Validate({
+    shape: adminValidator.projectSchema,
+    getObject: adminValidator.getProject,
+  }),
+  adminController.addPost
+);
 
 // Exportando en enrutador Projects
 export default router;
