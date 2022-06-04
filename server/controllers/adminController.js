@@ -8,8 +8,7 @@ const index = (req, res) => {
 // Agrega ideas de proyectos
 // GET /admin/add
 const add = (req, res) => {
-  res.send('Agregando ideas de proyectos 🚧');
-  // TODO: Agregar codigo para agregar proyectos
+  res.render('admin/addAdminView', {});
 };
 
 // Exportando el controlador

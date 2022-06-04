@@ -30,7 +30,7 @@ const index = (req, res) => {
 const about = (req, res) => {
   res.render('home/aboutView', {
     name: 'HugoBzn',
-    email: 'hugobazan14@hotmail.com',
+    email: 'hugobazan1499@gmail.com',
     url: 'https://github.com/HugoBzn',
     description:
       'Aplicacion que nos permitirá tener un control de gestión vehicular. ',
