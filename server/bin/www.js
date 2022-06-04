@@ -4,35 +4,35 @@
  * Module dependencies.
  */
 
-import app from "@s/app";
+import app from '@s/app';
 // var debug = require('debug')('proj-parking2022:server');
-import Debug from "debug";
+import Debug from 'debug';
 // var http = require('http');
-import http from "http";
+import http from 'http';
 
 // Creando instancia del debugger
-const debug = Debug("proj-parking2022:server");
+const debug = Debug('proj-parking2022:server');
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || "3000");
+const port = normalizePort(process.env.PORT || '3000');
 // app es una instancia de ExpressJs[] [ NODE ]
-app.set("port", port);
+app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-const server = http.createServer(app); //Callback (req,res,next, err) => {}
+const server = http.createServer(app); // Callback (req,res,next, err) => {}
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port); //Pone a escuchar al servidor
-server.on("error", onError); // Se registran eventos
-server.on("listening", onListening);
+server.listen(port); // Pone a escuchar al servidor
+server.on('error', onError); // Se registran eventos
+server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -59,20 +59,20 @@ function normalizePort(val) {
  */
 
 function onError(error) {
-  if (error.syscall !== "listen") {
+  if (error.syscall !== 'listen') {
     throw error;
   }
 
-  var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+  const bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
-    case "EACCES":
+    case 'EACCES':
       // console.error(bind + ' requires elevated privileges');
       console.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
-    case "EADDRINUSE":
+    case 'EADDRINUSE':
       // console.error(bind + ' is already in use');
       console.error(`${bind} is already in use`);
       process.exit(1);
@@ -86,9 +86,9 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 
- function onListening() {
+function onListening() {
   const addr = server.address();
-  const bind = typeof addr === "string" ? `pipe ${addr}` : `port ' ${port}`; 
+  const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ' ${port}`;
   debug(`Listening on ${bind}`);
   console.log(`Servidor escuchando... 🤖👂 en ${app.get('port')}`);
 }

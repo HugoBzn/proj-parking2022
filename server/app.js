@@ -1,62 +1,69 @@
-//Preámbulo
+/* eslint-disable no-console */
+
+// Preámbulo
 // Ayuda a manejar errores HTTP
 import createError from 'http-errors';
-//Ayuda a crear servidores web
+// Ayuda a crear servidores web
 import express from 'express';
-//Nucleo de node, ayuda al manejo de las rutas
+// Nucleo de node, ayuda al manejo de las rutas
 import path from 'path';
-//Ayuda al manejo de las cookies
+// Ayuda al manejo de las cookies
 import cookieParser from 'cookie-parser';
-//Maneja el log de peticiones http
+// Maneja el log de peticiones http
 import logger from 'morgan';
 
 // Las rutas
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import WebpackHotMiddleware from 'webpack-hot-middleware';
+
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 import aboutRouter from './routes/about';
 
-//Importando modulos de Webpack
-//Nucleo de Webpack
-import webpack from 'webpack';
-//Permite incrustar Webpack en Express
-import webpackDevMiddleware from 'webpack-dev-middleware';
-//Permite la actualizacion dinamica de la pagina
-import WebpackHotMiddleware from 'webpack-hot-middleware';
-//Configuración 
+// Importando modulos de Webpack
+// Nucleo de Webpack
+// Permite incrustar Webpack en Express
+// Permite la actualizacion dinamica de la pagina
+// Configuración
 import WebpackConfig from '../webpack.dev.config';
 
-//Aquí se crea la instancia de Express (req,res,next)=>{...}
+// Aquí se crea la instancia de Express (req,res,next)=>{...}
 const app = express();
 
-//Recuperar el modo de ejecución
+// Recuperar el modo de ejecución
 const nodeEnv = process.env.NODE_ENV || 'development';
 
-//Decidiendo si embebemos el Webpack Middleware
-if(nodeEnv === 'development'){
-  //Emebebiendo Webpack a mi aplicación
+// Decidiendo si embebemos el Webpack Middleware
+if (nodeEnv === 'development') {
+  // Emebebiendo Webpack a mi aplicación
   console.log(`✍ Ejecutando en modo desarrollo 🤱👶`);
-  //Estableciendo el modo de webpack en desarrollo en el configurador
-  WebpackConfig.mode = "development";
-  //Configurando la ruta del HMR (Hot Module Replacement)
-  //reload = true (Habilita la recarga automatica cuando un archivo JS cambia)
-  //timeout=1000 (Tiempo de refresco de página)
-  WebpackConfig.entry = ['webpack-hot-middleware/client?reload=true&timeout=1000', WebpackConfig.entry,];
-  //Agregando el plugin a la configuración de desarrollo
+  // Estableciendo el modo de webpack en desarrollo en el configurador
+  WebpackConfig.mode = 'development';
+  // Configurando la ruta del HMR (Hot Module Replacement)
+  // reload = true (Habilita la recarga automatica cuando un archivo JS cambia)
+  // timeout=1000 (Tiempo de refresco de página)
+  WebpackConfig.entry = [
+    'webpack-hot-middleware/client?reload=true&timeout=1000',
+    WebpackConfig.entry,
+  ];
+  // Agregando el plugin a la configuración de desarrollo
   WebpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
-  //Creando el empaquetador a partir de un objeto de configuración
+  // Creando el empaquetador a partir de un objeto de configuración
   const bundler = webpack(WebpackConfig);
-  //Habilitando el middleware en Express
-  app.use(webpackDevMiddleware(bundler, {
-    publicPath: WebpackConfig.output.publicPath
-  })); 
-  //Habilitando el Middleware del Webpack HMR
+  // Habilitando el middleware en Express
+  app.use(
+    webpackDevMiddleware(bundler, {
+      publicPath: WebpackConfig.output.publicPath,
+    })
+  );
+  // Habilitando el Middleware del Webpack HMR
   app.use(WebpackHotMiddleware(bundler));
-
-}else{
+} else {
   console.log(`✍ Ejecutando en modo producción ⚙⚙`);
 }
 
-//Configuración del motor de plantillas (Template engine)
+// Configuración del motor de plantillas (Template engine)
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -74,13 +81,13 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/about', aboutRouter);
 
-  // catch 404 and forward to error handler
-  app.use((req,res,next)=>{
-    next(createError(404));
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  next(createError(404));
 });
 
 // error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -90,5 +97,5 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-//Exportando instancia de app usando JS moderno
+// Exportando instancia de app usando JS moderno
 export default app;
