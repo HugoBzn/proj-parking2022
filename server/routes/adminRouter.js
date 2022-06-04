@@ -16,5 +16,10 @@ router.get(['/', '/index'], adminController.index);
 // GET /projects/add
 router.get('/add', adminController.add);
 
+/* ------ POST ------ */
+// Procesa el formulario que Agrega ideas de proyectos
+// POST /admin/add
+router.post('/add', adminController.addPost);
+
 // Exportando en enrutador Projects
 export default router;

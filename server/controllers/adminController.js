@@ -11,8 +11,20 @@ const add = (req, res) => {
   res.render('admin/addAdminView', {});
 };
 
+// Procesa el formulario que Agrega ideas de proyectos
+// POST /admin/add
+const addPost = (req, res) => {
+  // Desestructurando la informacion
+  // del formulario
+  const { name, description } = req.body;
+  // Regresar un objeto con los datos
+  // obtenidos del formulario
+  res.status(200).json({ name, description });
+};
+
 // Exportando el controlador
 export default {
   index,
   add,
+  addPost,
 };
