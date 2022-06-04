@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+/* eslint-disable no-restricted-globals */
+/* eslint-disable import/no-unresolved */
 
 /**
  * Module dependencies.
@@ -19,23 +21,11 @@ const debug = Debug('proj-parking2022:server');
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
-// app es una instancia de ExpressJs[] [ NODE ]
-app.set('port', port);
-
 /**
  * Create HTTP server.
  */
 
 const server = http.createServer(app); // Callback (req,res,next, err) => {}
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port); // Pone a escuchar al servidor
-server.on('error', onError); // Se registran eventos
-server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -56,6 +46,11 @@ function normalizePort(val) {
 
   return false;
 }
+
+const port = normalizePort(process.env.PORT || '3000');
+
+// app es una instancia de ExpressJs[] [ NODE ]
+app.set('port', port);
 
 /**
  * Event listener for HTTP server "error" event.
@@ -95,3 +90,11 @@ function onListening() {
   debug(`Listening on ${bind}`);
   winston.info(`Servidor escuchando... 🤖👂 en ${app.get('port')}`);
 }
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port); // Pone a escuchar al servidor
+server.on('error', onError); // Se registran eventos
+server.on('listening', onListening);

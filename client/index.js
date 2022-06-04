@@ -6,7 +6,7 @@ import './styles/mystyle.css';
 console.log('🎁 Front-End Working!!!');
 
 // Default parameters ES6/2015
-let show = (m = '😝') => {
+const show = (m = '😝') => {
   console.log(m);
 };
 show();
