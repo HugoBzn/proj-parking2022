@@ -2,8 +2,7 @@
 // Lista los proyectos
 // GET /admin | GET /admin/index
 const index = (req, res) => {
-  res.send('Listando proyectos 🚧');
-  //   TODO: Agregar codigo de listado de proyectos
+  res.render('admin/adminView', {});
 };
 
 // Agrega ideas de proyectos

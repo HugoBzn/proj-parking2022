@@ -2,19 +2,19 @@
 import { Router } from 'express';
 
 // Importando el controlador de proyectos
-import projectController from '../controllers/adminController';
+import adminController from '../controllers/adminController';
 
 // Creo una instancia del router
 const router = new Router();
 
 /* --- GET --- */
 // Listar proyectos
-// GET /projects/ | GET /projects/index
-router.get(['/', '/index'], projectController.index);
+// GET /admin/ | GET /admin/index
+router.get(['/', '/index'], adminController.index);
 
-// Registrar una idea de proyecto
+// Envia el formulario para registrar una idea de proyecto
 // GET /projects/add
-router.get('/add', projectController.add);
+router.get('/add', adminController.add);
 
 // Exportando en enrutador Projects
 export default router;
