@@ -1,17 +1,30 @@
-<!DOCTYPE html>
 <html>
   <head>
     <title>{{title}}</title>
-    {{!-- favicon --}}
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    {{!-- Cargando Materializecss --}}
+    {{! favicon }}
+    <link rel='shortcut icon' href='/images/favicon.ico' type='image/x-icon' />
+    {{! Cargando Materializecss }}
     <link rel='stylesheet' href='/vendor/materialize/css/materialize.min.css' />
     <link rel='stylesheet' href='/stylesheets/styles.css' />
   </head>
   <body>
-    {{{body}}}
-    {{!-- Materialize script --}}
-    <script src="/vendor/materialize/js/materialize.min.js"></script>
-    <script src="/javascripts/bundle.js"></script>
+    <nav>
+      <div class='container'>
+        <div class='nav-wrapper'>
+          <a href='/' class='brand-logo'>🌉 ProjNotes</a>
+          <ul id='nav-mobile' class='right hide-on-med-and-down'>
+            <li><a href='/'>Inicio</a></li>
+            <li><a href='/about'>Acerca de...</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class='container'>
+      {{{body}}}
+    </div>
+    {{! Materialize script }}
+    <script src='/vendor/materialize/js/materialize.min.js'></script>
+    {{! Bundle de la App }}
+    <script src='/javascripts/bundle.js'></script>
   </body>
 </html>
