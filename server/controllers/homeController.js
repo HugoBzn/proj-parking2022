@@ -33,7 +33,7 @@ const about = (req, res) => {
     email: 'hugobazan14@hotmail.com',
     url: 'https://github.com/HugoBzn',
     description:
-      'Aplicacion que te permite registrar ideas de proyectos. PWPCII-2022A',
+      'Aplicacion que nos permitirá tener un control de gestión vehicular. ',
     version: '0.0 alpha',
   });
 };
