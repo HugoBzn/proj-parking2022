@@ -1,18 +1,9 @@
 {{! Se crea una estructura Dropdown }}
 <ul id='dropdownMenu' class='dropdown-content'>
-  <li><a href='#'>
-      <i class='large material-icons' style='margin: 2px;'>list</i>
-      Ingresar
-    </a>
-  </li>
-  <li class='divider'></li>
-  <li><a href='#'>
-      <i class='large material-icons' style='margin: 2px;'>security</i>
-      Admin
-    </a>
-  </li>
+  {{! Operaciones }}
+  {{> _operations}}
 </ul>
-
+{{! Fin de operaciones }}
 <nav class='light-blue darken-4'>
   <div class='container'>
     <div class='nav-wrapper'>
@@ -33,20 +24,7 @@
       <ul id='slide-out' class='sidenav'>
         <li><a href='/'>🏠 Inicio</a></li>
         {{! Operaciones }}
-
-        {{! Dividor }}
-        <li class='divider'></li>
-        <li><a href='#'>
-            <i class='large material-icons' style='margin: 2px;'>list</i>
-            Ingresar
-          </a>
-        </li>
-        <li class='divider'></li>
-        <li><a href='#'>
-            <i class='large material-icons' style='margin: 2px;'>security</i>
-            Admin
-          </a>
-        </li>
+        {{> _operations}}
         <li class='divider'></li>
         <li><a href='/about'>👤 Acerca de...</a></li>
       </ul>
