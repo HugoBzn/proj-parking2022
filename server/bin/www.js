@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-/* eslint-disable no-restricted-globals */
-/* eslint-disable import/no-unresolved */
 
 /**
  * Module dependencies.
@@ -37,7 +35,7 @@ const server = http.createServer(app); // Callback (req,res,next, err) => {}
 function normalizePort(val) {
   const port = parseInt(val, 10);
 
-  if (isNaN(port)) {
+  if (Number.isNaN(port)) {
     // named pipe
     return val;
   }
