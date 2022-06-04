@@ -10,7 +10,7 @@ import path from 'path';
 // Ayuda al manejo de las cookies
 import cookieParser from 'cookie-parser';
 // Maneja el log de peticiones http
-import logger from 'morgan';
+import morgan from 'morgan';
 
 // Las rutas
 import webpack from 'webpack';
@@ -20,6 +20,9 @@ import WebpackHotMiddleware from 'webpack-hot-middleware';
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 import aboutRouter from './routes/about';
+
+// Importando nuestro logger winston
+import winston from './config/winston';
 
 // Importando modulos de Webpack
 // Nucleo de Webpack
@@ -69,7 +72,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // Todos los middlewares globales van primero que cualquier otro middleware de la aplicación
-app.use(logger('dev'));
+app.use(morgan('dev', { stream: winston.stream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // Middleware de archivos estaticos
