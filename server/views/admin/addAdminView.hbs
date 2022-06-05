@@ -1,0 +1,75 @@
+<div class='row'>
+  <div class='col s12 m10 offset-m1 l8 offset-l2'>
+    <div class='card'>
+      <div class='card-image'>
+        <img src='/images/itgam.jpg' alt='itgam image' />
+        <span class='card-title'>
+          Añadir usuario
+        </span>
+      </div>
+      <form autocomplete='off' action='/admin/add' method='POST'>
+        <div class='card-content'>
+          <div class='input-field'>
+            <label for='admin-name'>
+              Nombre
+            </label>
+            <input
+              placeholder='Ingrese el nombre usuario'
+              type='text'
+              id='admin-name'
+              name='name'
+              class='validate'
+            />
+          </div>
+          <div class='input-field'>
+            <label for='admin-control'>
+              Numero de Control
+            </label>
+            <input
+              placeholder='Ingrese el numero de control'
+              type='text'
+              id='admin-control'
+              name='control'
+              class='validate'
+            />
+          </div>
+          <div class='input-field'>
+            <label for='admin-marbete'>
+              Numero de Marbete
+            </label>
+            <input
+              placeholder='Ingrese el numero de Marbete'
+              type='text'
+              id='admin-marbete'
+              name='marbete'
+              class='validate'
+            />
+          </div>
+          <div class='input-field'>
+            <label for='admin-rol'>
+              Nombre
+            </label>
+            <input
+              placeholder='Ingrese el rol'
+              type='text'
+              id='admin-rol'
+              name='rol'
+              class='validate'
+            />
+          </div>
+        </div>
+        <div class='card-action'>
+          <button
+            type='submit'
+            class='blue darken-3 waves-effect waves-light btn'
+          >
+            <i class='material-icons left'>
+              save
+            </i>
+            Registrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{
+    "presets": [
+        [
+            "minify", {
+                "builtIns": false,
+                "evaluate": false,
+                "mangle":true
+            }
+        ],
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "node": "current"
+                }
+            }
+        ]
+    ],
+    "plugins": [
+        [
+            "module-resolver",{
+                "root": "./",
+                "alias": {
+                    "@s": "./server"
+                }
+                
+            }
+        ]
+    ]
+} 
