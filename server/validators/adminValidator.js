@@ -5,10 +5,10 @@ import * as Yup from 'yup';
 const projectSchema = Yup.object().shape({
   name: Yup.string().required('Se requiere un nombre'),
   control: Yup.string()
-    .max(500, 'La descripción esta limitada a 9 caracteres')
+    .max(9, 'La descripción esta limitada a 9 caracteres')
     .required('Se requiere un numero de control'),
   marbete: Yup.string()
-    .max(500, 'La descripción esta limitada a 3 caracteres')
+    .max(3, 'La descripción esta limitada a 3 caracteres')
     .required('Se requiere un numero de marbete'),
   rol: Yup.string().required('Se requiere un rol'),
 });

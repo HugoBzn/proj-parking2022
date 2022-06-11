@@ -3,7 +3,7 @@
     <div class='card'>
       <div class='card-image'>
         <img src='/images/itgam.jpg' alt='itgam image' />
-        <span class='card-title'>
+        <span class='card-title' style="color: black;">
           Añadir usuario
         </span>
       </div>
@@ -19,8 +19,19 @@
               id='admin-name'
               name='name'
               class='validate'
+              value='{{project.name}}'
+              required
             />
+            <span
+              class='helper-text'
+              data-error='Debe ingresar nombre del usuario'
+              data-success='Correcto'
+            ></span>
+            {{#if errorModel.nameError}}
+              <span style='color: red;'>Error: {{errorModel.nameError}}</span>
+            {{/if}}
           </div>
+
           <div class='input-field'>
             <label for='admin-control'>
               Numero de Control
@@ -31,8 +42,20 @@
               id='admin-control'
               name='control'
               class='validate'
+              value='{{project.control}}'
+              required
             />
+            <span
+              class='helper-text'
+              data-error='Debe ingresar numero de control'
+              data-success='Correcto'
+            ></span>
+            {{#if errorModel.controlError}}
+              <span style='color: red;'>Error:
+                {{errorModel.controlError}}</span>
+            {{/if}}
           </div>
+
           <div class='input-field'>
             <label for='admin-marbete'>
               Numero de Marbete
@@ -43,11 +66,23 @@
               id='admin-marbete'
               name='marbete'
               class='validate'
+              value='{{project.marbete}}'
+              required
             />
+            <span
+              class='helper-text'
+              data-error='Debe ingresar numero de marbete'
+              data-success='Correcto'
+            ></span>
+            {{#if errorModel.marbeteError}}
+              <span style='color: red;'>Error:
+                {{errorModel.marbeteError}}</span>
+            {{/if}}
           </div>
+
           <div class='input-field'>
             <label for='admin-rol'>
-              Nombre
+              Rol
             </label>
             <input
               placeholder='Ingrese el rol'
@@ -55,9 +90,21 @@
               id='admin-rol'
               name='rol'
               class='validate'
+              value='{{project.rol}}'
+              required
             />
+            <span
+              class='helper-text'
+              data-error='Debe ingresar el rol del usuario'
+              data-success='Correcto'
+            ></span>
+            {{#if errorModel.rolError}}
+              <span style='color: red;'>Error:
+                {{errorModel.rolError}}</span>
+            {{/if}}
           </div>
         </div>
+
         <div class='card-action'>
           <button
             type='submit'
