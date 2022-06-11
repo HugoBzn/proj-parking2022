@@ -50,7 +50,7 @@ const addPost = async (req, res) => {
       return newVal;
     }, {});
     // La validacion falló
-    return res.render('projects/addProjectView', { project, errorModel });
+    return res.render('admin/addAdminView', { project, errorModel });
   }
   log.info('Se retorna objeto project valido');
   // Crear un documento con los datos provistos por
