@@ -34,5 +34,8 @@ router.post(
   adminController.addPost
 );
 
+// GET /adminView
+router.get('/adminView', adminController.adminView);
+
 // Exportando en enrutador Projects
 export default router;
