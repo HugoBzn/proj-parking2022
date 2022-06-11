@@ -1,17 +1,17 @@
 {
   "name": "proj-parking2022",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "SET NODE_ENV=production && node ./dist/bin/www",
-    "dev": "babel-watch ./server/bin/www",
-    "client:server": "SET NODE_ENV = development && webpack serve --config ./webpack.dev.config.js --mode development",
-    "clean": "rimraf dist",
-    "clean:client": "rimraf public/javascripts/bundle.js && rimraf public/stylesheets/styles.css",
-    "build:s": "npm run clean:client && babel ./server --out-dir dist --copy-files",
-    "build:client": "npm run clean && webpack --config ./webpack.config.js --mode production",
+    "start": "NODE_ENV=production node ./dist/bin/www",
+    "dev": "NODE_ENV=development babel-watch ./server/bin/www",
+    "client:server": "NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
+    "clean:server": "rm -rf dist",
+    "clean:client": "rm -rf public/javascripts/bundle.js && rm -rf public/stylesheets/styles.css",
+    "build:s": "npm run clean:server && babel ./server --out-dir dist --copy-files",
+    "build:client": "npm run clean:client && webpack --config ./webpack.config.js --mode production",
     "lint-server": "eslint ./server",
-    "clearlogs": "rimraf ./server/logs/*.log"
+    "clearlogs": "rm -rf ./server/logs/*.log"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
